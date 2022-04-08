@@ -28,10 +28,13 @@ pre {
   color: #afbac4; }
 
 .white {
-  color: white; }
+  color: white !important; }
 
 .black {
-  color: black; }
+  color: black !important; }
+
+.primary {
+  color: #ffe102 !important; }
 
 /*=================================================================
   Basic Setup
