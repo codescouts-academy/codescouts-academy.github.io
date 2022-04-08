@@ -341,6 +341,9 @@ a:hover {
 .navbar-dark .navbar-nav .show > .nav-link {
   color: #ffe102; }
 
+.navbar-dark .navbar-nav {
+  font-size: 1.3rem; }
+
 .navbar-toggler:focus {
   outline: 0; }
 
