@@ -1,12 +1,13 @@
 html {
-  color: #737f8a;
-  overflow-x: hidden; }
+  color: #737f8a; }
 
 body {
   font-family: "Anaheim", sans-serif;
   color: #737f8a;
-  -webkit-font-smoothing: antialiased;
-  width: 100%; }
+  -webkit-font-smoothing: antialiased; }
+
+html body {
+  overflow-x: hidden; }
 
 h1,
 h2,
