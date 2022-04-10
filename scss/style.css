@@ -4,7 +4,11 @@ html {
 body {
   font-family: "Anaheim", sans-serif;
   color: #737f8a;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  width: 100%; }
+
+html, body {
+  overflow-x: hidden; }
 
 h1,
 h2,
