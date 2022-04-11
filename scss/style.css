@@ -241,6 +241,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center; }
+  .preloader > img {
+    width: 15rem; }
 
 .title {
   padding-bottom: 60px; }
