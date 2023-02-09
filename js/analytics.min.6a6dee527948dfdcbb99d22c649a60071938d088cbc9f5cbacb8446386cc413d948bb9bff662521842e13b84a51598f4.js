@@ -1,0 +1,1 @@
+$(document).ready(function(){const e=(e,t,n)=>{if(!e)return;window.gtag=window.gtag??function(...e){console.log(e)},gtag("event",e,{event_category:t,event_label:n})};$("a").each((s,t)=>{const n=$(t);n.click(s=>{const n=$(s.currentTarget),t=n.data();e(t.event||"click",t.category||"action",t.label||n.text())})})})
