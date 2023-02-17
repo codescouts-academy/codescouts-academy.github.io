@@ -1,0 +1,1 @@
+$(document).ready(function(){if(!Cookies.get("news")){const e=$("#news"),t=e.data().expire,n=Math.floor(Math.random()*10)*1e3;setTimeout(()=>{e.modal({keyboard:!1,backdrop:!1,focus:!1}),$(".help-action").on("click",()=>{Cookies.set("news",!0,{expires:t}),$("#news").modal("hide")})},n)}})
