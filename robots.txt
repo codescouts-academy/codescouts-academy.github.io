@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /images/
 Disallow: /legal/
+Disallow: /blog/page/
