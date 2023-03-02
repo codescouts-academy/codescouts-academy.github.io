@@ -2,3 +2,5 @@ User-agent: *
 Disallow: /images/
 Disallow: /legal/
 Disallow: /blog/page/
+
+Sitemap: https://www.codescouts.academy/sitemap.xml
