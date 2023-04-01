@@ -1,1 +1,0 @@
-$(document).ready(function(){const e=$("#announcement");Cookies.get("announcement")||e.addClass("show");const t=e.data().expire;$("#announcement-close").on("click",()=>{Cookies.set("announcement",!0,{expires:t})})})
