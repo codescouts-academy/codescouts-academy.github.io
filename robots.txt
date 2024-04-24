@@ -1,4 +1,6 @@
 User-agent: *
+
+Allow: /images/favicon.png
 Disallow: /images/
 Disallow: /legal/
 Disallow: /blog/page/
