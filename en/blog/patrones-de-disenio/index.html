@@ -1,0 +1,1008 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><title>GOF Design patterns</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="Technical coaching | Programa acelerado | Consultoría de software | Cursos a medida"><meta name=author content="CodeScouts"><meta property="og:title" content="GOF Design patterns"><meta property="og:description" content="Complete guide about GOF design patterns, creational, behavioural and structural."><meta property="og:type" content="article"><meta property="og:url" content="https://www.codescouts.academy/en/blog/patrones-de-disenio/"><meta property="og:image" content="https://www.codescouts.academy/images/blog/gof-feature.png"><meta property="article:section" content="blog"><meta property="article:published_time" content="2025-10-29T00:00:00+00:00"><meta property="article:modified_time" content="2025-10-29T00:00:00+00:00"><meta itemprop=name content="GOF Design patterns"><meta itemprop=description content="Complete guide about GOF design patterns, creational, behavioural and structural."><meta itemprop=datePublished content="2025-10-29T00:00:00+00:00"><meta itemprop=dateModified content="2025-10-29T00:00:00+00:00"><meta itemprop=wordCount content="2341"><meta itemprop=image content="https://www.codescouts.academy/images/blog/gof-feature.png"><meta itemprop=keywords content="GOF,gang of four,design patterns,codescouts,"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.codescouts.academy/images/blog/gof-feature.png"><meta name=twitter:title content="GOF Design patterns"><meta name=twitter:description content="Complete guide about GOF design patterns, creational, behavioural and structural."><link rel=stylesheet href=https://www.codescouts.academy/plugins/bootstrap/bootstrap.min.e26fdc28b9a513da87a78a221c6af5d3.css><link rel=stylesheet href=https://www.codescouts.academy/plugins/themify-icons/themify-icons.min.61e283907de9c2c565fd2415cd340864.css><link rel=stylesheet href=https://www.codescouts.academy/plugins/magnific-popup/magnific-popup.min.da533682e9303000c0961392fbdb95ba.css><link rel=stylesheet href=https://www.codescouts.academy/plugins/slick/slick.min.da4e146913da6966d85a6b8686886edb.css><link rel=stylesheet href=https://www.codescouts.academy/plugins/slick/slick-theme.min.47f888eb559595c6a6839815066fe4f5.css><link rel=stylesheet href=https://www.codescouts.academy/scss/style.min.da773039b8a780055dbfa462ff8dc597.css media=screen><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css integrity="sha512-OivR4OdSsE1onDm/i3J3Hpsm5GmOVvr9r49K3jJ0dnsxVzZgaOJ5MfxEAxCyGrzWozL9uJGKz6un3A7L+redIQ==" crossorigin=anonymous referrerpolicy=no-referrer><script src=https://unpkg.com/twemoji@latest/dist/twemoji.min.js crossorigin=anonymous></script>
+<link rel="shortcut icon" href=https://www.codescouts.academy/images/favicon.png type=image/x-icon><link rel=icon href=https://www.codescouts.academy/images/favicon.png type=image/x-icon><script async src="https://www.googletagmanager.com/gtag/js?id=G-D9YJJ6TV7V"></script> <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-D9YJJ6TV7V")</script></head><body><div class=preloader><img src=https://www.codescouts.academy/images/logo.png alt=preloader></div><section class="sticky-top navigation"><div class=container><nav class="navbar navbar-expand-lg navbar-dark"><a class="navbar-brand p-0" href=/en><img class=logo src=https://www.codescouts.academy/images/logo.png alt=CodeScouts loading=lazy></a>
+<button class="navbar-toggler rounded-0" type=button data-toggle=collapse data-target=#navigation>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navigation><ul class="navbar-nav ml-auto"><li class=nav-item><a class=nav-link href=/en#about>About</a></li><li class=nav-item><a class=nav-link href=/en/courses>Training</a></li><li class=nav-item><a class=nav-link href=/en/services>Services</a></li><li class=nav-item><a class=nav-link href=/en/clients>Clients</a></li><li class=nav-item><a class=nav-link href=/en/blog>Blog</a></li><li class=nav-item><a class=nav-link href=/en/contact>Contact</a></li><li class=nav-item><a class=nav-link href=https://www.codescouts.academy/blog/patrones-de-disenio/><u class=mt-1>ES</u></a></li></ul></div></nav></div></section><section class="single section"><div class=container><div class=row><div class="col-lg-10 offset-lg-1 text-center"><h1><span>GOF</span>
+<span class=secondary>Design patterns</span></h1><div class=border-meghna></div><br><div class=p-2>Tiempo de lectura:
+11
+minutos</div><ul class="list-inline mb-25"><li class=list-inline-item>Wednesday, 29 de Oct 2025</li></ul><img class="img-fluid mb-25" src=https://www.codescouts.academy/images/blog/gof-feature.png loading=lazy><br></div><div class="col-lg-10 offset-lg-1"><div class=post-single-content><h1 id=design-patterns-in-software-development>Design Patterns in Software Development</h1><h2 id=-table-of-contents>📑 Table of Contents</h2><ul><li><a href=#creational-patterns>Creational Patterns</a><ul><li><a href=#singleton>Singleton</a></li><li><a href=#factory-method>Factory Method</a></li><li><a href=#builder>Builder</a></li></ul></li><li><a href=#structural-patterns>Structural Patterns</a><ul><li><a href=#adapter>Adapter</a></li><li><a href=#decorator>Decorator</a></li><li><a href=#facade>Facade</a></li></ul></li><li><a href=#behavioral-patterns>Behavioral Patterns</a><ul><li><a href=#observer>Observer</a></li><li><a href=#strategy>Strategy</a></li><li><a href=#command>Command</a></li></ul></li><li><a href=#patterns-in-react>Patterns in React</a><ul><li><a href=#containerpresentational-pattern>Container/Presentational Pattern</a></li><li><a href=#render-props-pattern>Render Props Pattern</a></li><li><a href=#custom-hooks-pattern>Custom Hooks Pattern</a></li></ul></li><li><a href=#best-practices>Best Practices</a></li><li><a href=#additional-resources>Additional Resources</a></li><li><a href=#conclusion>Conclusion</a></li></ul><hr><p>Design patterns are proven and documented solutions to common problems in software development. They are like recipes that help us write more maintainable, scalable, and understandable code.</p><h2 id=-what-are-design-patterns>🎯 What are Design Patterns?</h2><p>A design pattern is a general reusable solution to a commonly occurring problem in software design. It&rsquo;s not code that you can copy and paste directly, but rather a template for how to solve a problem that can be used in many different situations.</p><h3 id=advantages-of-using-design-patterns>Advantages of Using Design Patterns</h3><ul><li><strong>✅ Reusability</strong>: Proven solutions that work</li><li><strong>✅ Communication</strong>: Common vocabulary among developers</li><li><strong>✅ Maintainability</strong>: Code that&rsquo;s easier to understand and modify</li><li><strong>✅ Scalability</strong>: Facilitate project growth</li><li><strong>✅ Best Practices</strong>: Incorporate expert experience</li></ul><h2 id=-pattern-classification>📚 Pattern Classification</h2><p>Design patterns are classified into three main categories:</p><h3 id=1-creational-patterns>1. Creational Patterns</h3><p>Focus on how objects are created, providing flexibility in instance creation.</p><h3 id=2-structural-patterns>2. Structural Patterns</h3><p>Deal with how classes and objects are composed to form larger structures.</p><h3 id=3-behavioral-patterns>3. Behavioral Patterns</h3><p>Focus on communication between objects and how responsibilities are distributed.</p><hr><h2 id=-creational-patterns>🏗️ Creational Patterns</h2><h3 id=singleton>Singleton</h3><p><strong>Purpose</strong>: Ensure a class has only one instance and provide a global point of access to it.</p><p><strong>When to use it</strong>:</p><ul><li>You need exactly one instance of a class</li><li>Database connections</li><li>Configuration managers</li><li>System logs</li></ul><p><strong>JavaScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Database</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>if</span> <span style=color:#111>(</span><span style=color:#75af00>Database</span><span style=color:#111>.</span><span style=color:#75af00>instance</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>return</span> <span style=color:#75af00>Database</span><span style=color:#111>.</span><span style=color:#75af00>instance</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>connection</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>null</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>Database</span><span style=color:#111>.</span><span style=color:#75af00>instance</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>this</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>connect</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>if</span> <span style=color:#111>(</span><span style=color:#f92672>!</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>connection</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>connection</span> <span style=color:#f92672>=</span> <span style=color:#d88200>&#34;Connection established&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;New connection created&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>connection</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>db1</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Database</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>const</span> <span style=color:#75af00>db2</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Database</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#75af00>db1</span> <span style=color:#f92672>===</span> <span style=color:#75af00>db2</span><span style=color:#111>);</span> <span style=color:#75715e>// true - same instance
+</span></span></span></code></pre></td></tr></table></div></div><p><strong>⚠️ Caution</strong>: Singleton can make unit testing difficult and create hidden dependencies.</p><hr><h3 id=factory-method>Factory Method</h3><p><strong>Purpose</strong>: Defines an interface for creating objects, but lets subclasses decide which class to instantiate.</p><p><strong>When to use it</strong>:</p><ul><li>You don&rsquo;t know in advance the exact type of objects you&rsquo;ll need</li><li>You want to delegate creation logic</li><li>You need to extend object creation easily</li></ul><p><strong>TypeScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#00a8c8>interface</span> <span style=color:#75af00>Animal</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>speak</span><span style=color:#111>()</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>string</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Dog</span> <span style=color:#00a8c8>implements</span> <span style=color:#75af00>Animal</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>speak</span><span style=color:#111>()</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>string</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#d88200>&#34;Woof!&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Cat</span> <span style=color:#00a8c8>implements</span> <span style=color:#75af00>Animal</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>speak</span><span style=color:#111>()</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>string</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#d88200>&#34;Meow!&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Factory
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>AnimalFactory</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>static</span> <span style=color:#75af00>createAnimal</span><span style=color:#111>(</span><span style=color:#00a8c8>type</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>string</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#75af00>Animal</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>switch</span> <span style=color:#111>(</span><span style=color:#00a8c8>type</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>case</span> <span style=color:#d88200>&#34;dog&#34;</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Dog</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>case</span> <span style=color:#d88200>&#34;cat&#34;</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Cat</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>default</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#00a8c8>throw</span> <span style=color:#00a8c8>new</span> <span style=color:#111>Error</span><span style=color:#111>(</span><span style=color:#d88200>&#34;Unknown animal type&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>myDog</span> <span style=color:#f92672>=</span> <span style=color:#75af00>AnimalFactory</span><span style=color:#111>.</span><span style=color:#75af00>createAnimal</span><span style=color:#111>(</span><span style=color:#d88200>&#34;dog&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#75af00>myDog</span><span style=color:#111>.</span><span style=color:#75af00>speak</span><span style=color:#111>());</span> <span style=color:#75715e>// Woof!
+</span></span></span></code></pre></td></tr></table></div></div><hr><h3 id=builder>Builder</h3><p><strong>Purpose</strong>: Separates the construction of a complex object from its representation, allowing different representations to be created with the same construction process.</p><p><strong>When to use it</strong>:</p><ul><li>Objects with many optional parameters</li><li>Step-by-step construction</li><li>Immutability in construction</li></ul><p><strong>JavaScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Pizza</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>builder</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>size</span> <span style=color:#f92672>=</span> <span style=color:#75af00>builder</span><span style=color:#111>.</span><span style=color:#75af00>size</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cheese</span> <span style=color:#f92672>=</span> <span style=color:#75af00>builder</span><span style=color:#111>.</span><span style=color:#75af00>cheese</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>pepperoni</span> <span style=color:#f92672>=</span> <span style=color:#75af00>builder</span><span style=color:#111>.</span><span style=color:#75af00>pepperoni</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>bacon</span> <span style=color:#f92672>=</span> <span style=color:#75af00>builder</span><span style=color:#111>.</span><span style=color:#75af00>bacon</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>mushrooms</span> <span style=color:#f92672>=</span> <span style=color:#75af00>builder</span><span style=color:#111>.</span><span style=color:#75af00>mushrooms</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>PizzaBuilder</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>size</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>size</span> <span style=color:#f92672>=</span> <span style=color:#75af00>size</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>addCheese</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cheese</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>true</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>addPepperoni</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>pepperoni</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>true</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>addBacon</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>bacon</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>true</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>addMushrooms</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>mushrooms</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>true</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>build</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Pizza</span><span style=color:#111>(</span><span style=color:#00a8c8>this</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>myPizza</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>PizzaBuilder</span><span style=color:#111>(</span><span style=color:#d88200>&#34;large&#34;</span><span style=color:#111>)</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>.</span><span style=color:#75af00>addCheese</span><span style=color:#111>()</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>.</span><span style=color:#75af00>addPepperoni</span><span style=color:#111>()</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>.</span><span style=color:#75af00>addMushrooms</span><span style=color:#111>()</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>.</span><span style=color:#75af00>build</span><span style=color:#111>();</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=-structural-patterns>🏛️ Structural Patterns</h2><h3 id=adapter>Adapter</h3><p><strong>Purpose</strong>: Allows incompatible interfaces to work together, acting as a bridge between two interfaces.</p><p><strong>When to use it</strong>:</p><ul><li>Integrate third-party libraries</li><li>Work with legacy APIs</li><li>Compatibility between different systems</li></ul><p><strong>TypeScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// Old interface
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>OldCalculator</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>operation</span><span style=color:#111>(</span><span style=color:#75af00>num1</span>: <span style=color:#00a8c8>number</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span>: <span style=color:#00a8c8>number</span><span style=color:#111>,</span> <span style=color:#75af00>operation</span>: <span style=color:#00a8c8>string</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>number</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>switch</span> <span style=color:#111>(</span><span style=color:#75af00>operation</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>case</span> <span style=color:#d88200>&#34;add&#34;</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#00a8c8>return</span> <span style=color:#75af00>num1</span> <span style=color:#f92672>+</span> <span style=color:#75af00>num2</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>case</span> <span style=color:#d88200>&#34;sub&#34;</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#00a8c8>return</span> <span style=color:#75af00>num1</span> <span style=color:#f92672>-</span> <span style=color:#75af00>num2</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#00a8c8>default</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#00a8c8>return</span> <span style=color:#ae81ff>0</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Expected new interface
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>interface</span> <span style=color:#75af00>NewCalculator</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>add</span><span style=color:#111>(</span><span style=color:#75af00>num1</span>: <span style=color:#00a8c8>number</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>number</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>subtract</span><span style=color:#111>(</span><span style=color:#75af00>num1</span>: <span style=color:#00a8c8>number</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>number</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Adapter
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>CalculatorAdapter</span> <span style=color:#00a8c8>implements</span> <span style=color:#75af00>NewCalculator</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>private</span> <span style=color:#75af00>oldCalc</span>: <span style=color:#00a8c8>OldCalculator</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>constructor</span><span style=color:#111>(</span><span style=color:#75af00>oldCalc</span>: <span style=color:#00a8c8>OldCalculator</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>oldCalc</span> <span style=color:#f92672>=</span> <span style=color:#75af00>oldCalc</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>add</span><span style=color:#111>(</span><span style=color:#75af00>num1</span>: <span style=color:#00a8c8>number</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>number</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>oldCalc</span><span style=color:#111>.</span><span style=color:#75af00>operation</span><span style=color:#111>(</span><span style=color:#75af00>num1</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span><span style=color:#111>,</span> <span style=color:#d88200>&#34;add&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>subtract</span><span style=color:#111>(</span><span style=color:#75af00>num1</span>: <span style=color:#00a8c8>number</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>number</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>oldCalc</span><span style=color:#111>.</span><span style=color:#75af00>operation</span><span style=color:#111>(</span><span style=color:#75af00>num1</span><span style=color:#111>,</span> <span style=color:#75af00>num2</span><span style=color:#111>,</span> <span style=color:#d88200>&#34;sub&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>oldCalc</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>OldCalculator</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>const</span> <span style=color:#75af00>adaptedCalc</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>CalculatorAdapter</span><span style=color:#111>(</span><span style=color:#75af00>oldCalc</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#75af00>adaptedCalc</span><span style=color:#111>.</span><span style=color:#75af00>add</span><span style=color:#111>(</span><span style=color:#ae81ff>5</span><span style=color:#111>,</span> <span style=color:#ae81ff>3</span><span style=color:#111>));</span> <span style=color:#75715e>// 8
+</span></span></span></code></pre></td></tr></table></div></div><hr><h3 id=decorator>Decorator</h3><p><strong>Purpose</strong>: Adds functionality to objects dynamically without modifying their structure.</p><p><strong>When to use it</strong>:</p><ul><li>Add responsibilities to objects dynamically</li><li>Avoid subclass explosion</li><li>Composition over inheritance</li></ul><p><strong>JavaScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Coffee</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>cost</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#ae81ff>5</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>description</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#d88200>&#34;Simple coffee&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Decorators
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>MilkDecorator</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>coffee</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>coffee</span> <span style=color:#f92672>=</span> <span style=color:#75af00>coffee</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>cost</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>coffee</span><span style=color:#111>.</span><span style=color:#75af00>cost</span><span style=color:#111>()</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>description</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>coffee</span><span style=color:#111>.</span><span style=color:#75af00>description</span><span style=color:#111>()</span> <span style=color:#f92672>+</span> <span style=color:#d88200>&#34;, with milk&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>SugarDecorator</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>coffee</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>coffee</span> <span style=color:#f92672>=</span> <span style=color:#75af00>coffee</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>cost</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>coffee</span><span style=color:#111>.</span><span style=color:#75af00>cost</span><span style=color:#111>()</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>description</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>coffee</span><span style=color:#111>.</span><span style=color:#75af00>description</span><span style=color:#111>()</span> <span style=color:#f92672>+</span> <span style=color:#d88200>&#34;, with sugar&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>let</span> <span style=color:#75af00>myCoffee</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Coffee</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>myCoffee</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>MilkDecorator</span><span style=color:#111>(</span><span style=color:#75af00>myCoffee</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>myCoffee</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>SugarDecorator</span><span style=color:#111>(</span><span style=color:#75af00>myCoffee</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#75af00>myCoffee</span><span style=color:#111>.</span><span style=color:#75af00>description</span><span style=color:#111>());</span> <span style=color:#75715e>// Simple coffee, with milk, with sugar
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`Price: $</span><span style=color:#d88200>${</span><span style=color:#75af00>myCoffee</span><span style=color:#111>.</span><span style=color:#75af00>cost</span><span style=color:#111>()</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span><span style=color:#111>);</span> <span style=color:#75715e>// Price: $8
+</span></span></span></code></pre></td></tr></table></div></div><hr><h3 id=facade>Facade</h3><p><strong>Purpose</strong>: Provides a simplified interface to a complex subsystem.</p><p><strong>When to use it</strong>:</p><ul><li>Simplify complex systems</li><li>Reduce dependencies between clients and subsystems</li><li>Create abstraction layers</li></ul><p><strong>JavaScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// Complex subsystem
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>CPU</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>freeze</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;CPU: Freezing...&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>jump</span><span style=color:#111>(</span><span style=color:#75af00>position</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`CPU: Jumping to </span><span style=color:#d88200>${</span><span style=color:#75af00>position</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>execute</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;CPU: Executing...&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Memory</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>load</span><span style=color:#111>(</span><span style=color:#75af00>position</span><span style=color:#111>,</span> <span style=color:#75af00>data</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`Memory: Loading data at </span><span style=color:#d88200>${</span><span style=color:#75af00>position</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>HardDrive</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>read</span><span style=color:#111>(</span><span style=color:#75af00>sector</span><span style=color:#111>,</span> <span style=color:#75af00>size</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`Disk: Reading sector </span><span style=color:#d88200>${</span><span style=color:#75af00>sector</span><span style=color:#d88200>}</span><span style=color:#d88200>, size </span><span style=color:#d88200>${</span><span style=color:#75af00>size</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#d88200>&#34;boot data&#34;</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Facade
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>ComputerFacade</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cpu</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>CPU</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>memory</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Memory</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>hardDrive</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>HardDrive</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>start</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;=== Starting computer ===&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cpu</span><span style=color:#111>.</span><span style=color:#75af00>freeze</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>const</span> <span style=color:#75af00>bootData</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>hardDrive</span><span style=color:#111>.</span><span style=color:#75af00>read</span><span style=color:#111>(</span><span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#ae81ff>1024</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>memory</span><span style=color:#111>.</span><span style=color:#75af00>load</span><span style=color:#111>(</span><span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#75af00>bootData</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cpu</span><span style=color:#111>.</span><span style=color:#75af00>jump</span><span style=color:#111>(</span><span style=color:#ae81ff>0</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cpu</span><span style=color:#111>.</span><span style=color:#75af00>execute</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;=== Computer started ===&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage - much simpler
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>computer</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>ComputerFacade</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>computer</span><span style=color:#111>.</span><span style=color:#75af00>start</span><span style=color:#111>();</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=-behavioral-patterns>🎭 Behavioral Patterns</h2><h3 id=observer>Observer</h3><p><strong>Purpose</strong>: Defines a one-to-many dependency between objects, so that when one object changes state, all its dependents are notified automatically.</p><p><strong>When to use it</strong>:</p><ul><li>Event systems</li><li>View updates (MVC, MVVM)</li><li>Real-time notifications</li></ul><p><strong>JavaScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Subject</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>observers</span> <span style=color:#f92672>=</span> <span style=color:#111>[];</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>subscribe</span><span style=color:#111>(</span><span style=color:#75af00>observer</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>observers</span><span style=color:#111>.</span><span style=color:#75af00>push</span><span style=color:#111>(</span><span style=color:#75af00>observer</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>unsubscribe</span><span style=color:#111>(</span><span style=color:#75af00>observer</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>observers</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>observers</span><span style=color:#111>.</span><span style=color:#75af00>filter</span><span style=color:#111>((</span><span style=color:#75af00>obs</span><span style=color:#111>)</span> <span style=color:#111>=&gt;</span> <span style=color:#75af00>obs</span> <span style=color:#f92672>!==</span> <span style=color:#75af00>observer</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>notify</span><span style=color:#111>(</span><span style=color:#75af00>data</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>observers</span><span style=color:#111>.</span><span style=color:#75af00>forEach</span><span style=color:#111>((</span><span style=color:#75af00>observer</span><span style=color:#111>)</span> <span style=color:#111>=&gt;</span> <span style=color:#75af00>observer</span><span style=color:#111>.</span><span style=color:#75af00>update</span><span style=color:#111>(</span><span style=color:#75af00>data</span><span style=color:#111>));</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Observer</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>name</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>name</span> <span style=color:#f92672>=</span> <span style=color:#75af00>name</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>update</span><span style=color:#111>(</span><span style=color:#75af00>data</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`</span><span style=color:#d88200>${</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>name</span><span style=color:#d88200>}</span><span style=color:#d88200> received: </span><span style=color:#d88200>${</span><span style=color:#75af00>data</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>youtubeChannel</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Subject</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>const</span> <span style=color:#75af00>subscriber1</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Observer</span><span style=color:#111>(</span><span style=color:#d88200>&#34;John&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>const</span> <span style=color:#75af00>subscriber2</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Observer</span><span style=color:#111>(</span><span style=color:#d88200>&#34;Mary&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75af00>youtubeChannel</span><span style=color:#111>.</span><span style=color:#75af00>subscribe</span><span style=color:#111>(</span><span style=color:#75af00>subscriber1</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>youtubeChannel</span><span style=color:#111>.</span><span style=color:#75af00>subscribe</span><span style=color:#111>(</span><span style=color:#75af00>subscriber2</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75af00>youtubeChannel</span><span style=color:#111>.</span><span style=color:#75af00>notify</span><span style=color:#111>(</span><span style=color:#d88200>&#34;New video available!&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// John received: New video available!
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// Mary received: New video available!
+</span></span></span></code></pre></td></tr></table></div></div><hr><h3 id=strategy>Strategy</h3><p><strong>Purpose</strong>: Defines a family of algorithms, encapsulates them, and makes them interchangeable.</p><p><strong>When to use it</strong>:</p><ul><li>Multiple related algorithms</li><li>Avoid complex conditionals</li><li>Change behavior at runtime</li></ul><p><strong>TypeScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">67
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">68
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">69
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">70
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#00a8c8>interface</span> <span style=color:#75af00>PaymentStrategy</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>pay</span><span style=color:#111>(</span><span style=color:#75af00>amount</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>CreditCardPayment</span> <span style=color:#00a8c8>implements</span> <span style=color:#75af00>PaymentStrategy</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>private</span> <span style=color:#75af00>cardNumber</span>: <span style=color:#00a8c8>string</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>constructor</span><span style=color:#111>(</span><span style=color:#75af00>cardNumber</span>: <span style=color:#00a8c8>string</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cardNumber</span> <span style=color:#f92672>=</span> <span style=color:#75af00>cardNumber</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>pay</span><span style=color:#111>(</span><span style=color:#75af00>amount</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span>
+</span></span><span style=display:flex><span>      <span style=color:#d88200>`Paying $</span><span style=color:#d88200>${</span><span style=color:#75af00>amount</span><span style=color:#d88200>}</span><span style=color:#d88200> with card ending in </span><span style=color:#d88200>${</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>cardNumber</span><span style=color:#111>.</span><span style=color:#75af00>slice</span><span style=color:#111>(</span><span style=color:#f92672>-</span><span style=color:#ae81ff>4</span><span style=color:#111>)</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>PayPalPayment</span> <span style=color:#00a8c8>implements</span> <span style=color:#75af00>PaymentStrategy</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>private</span> <span style=color:#75af00>email</span>: <span style=color:#00a8c8>string</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>constructor</span><span style=color:#111>(</span><span style=color:#75af00>email</span>: <span style=color:#00a8c8>string</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>email</span> <span style=color:#f92672>=</span> <span style=color:#75af00>email</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>pay</span><span style=color:#111>(</span><span style=color:#75af00>amount</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`Paying $</span><span style=color:#d88200>${</span><span style=color:#75af00>amount</span><span style=color:#d88200>}</span><span style=color:#d88200> with PayPal (</span><span style=color:#d88200>${</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>email</span><span style=color:#d88200>}</span><span style=color:#d88200>)`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>BitcoinPayment</span> <span style=color:#00a8c8>implements</span> <span style=color:#75af00>PaymentStrategy</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>private</span> <span style=color:#75af00>walletAddress</span>: <span style=color:#00a8c8>string</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>constructor</span><span style=color:#111>(</span><span style=color:#75af00>walletAddress</span>: <span style=color:#00a8c8>string</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>walletAddress</span> <span style=color:#f92672>=</span> <span style=color:#75af00>walletAddress</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>pay</span><span style=color:#111>(</span><span style=color:#75af00>amount</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>`Paying $</span><span style=color:#d88200>${</span><span style=color:#75af00>amount</span><span style=color:#d88200>}</span><span style=color:#d88200> with Bitcoin (</span><span style=color:#d88200>${</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>walletAddress</span><span style=color:#d88200>}</span><span style=color:#d88200>)`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>ShoppingCart</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>private</span> <span style=color:#75af00>amount</span>: <span style=color:#00a8c8>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>private</span> <span style=color:#75af00>paymentStrategy</span>: <span style=color:#00a8c8>PaymentStrategy</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>setAmount</span><span style=color:#111>(</span><span style=color:#75af00>amount</span>: <span style=color:#00a8c8>number</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>amount</span> <span style=color:#f92672>=</span> <span style=color:#75af00>amount</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>setPaymentStrategy</span><span style=color:#111>(</span><span style=color:#75af00>strategy</span>: <span style=color:#00a8c8>PaymentStrategy</span><span style=color:#111>)</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>paymentStrategy</span> <span style=color:#f92672>=</span> <span style=color:#75af00>strategy</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>checkout</span><span style=color:#111>()</span><span style=color:#f92672>:</span> <span style=color:#00a8c8>void</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>paymentStrategy</span><span style=color:#111>.</span><span style=color:#75af00>pay</span><span style=color:#111>(</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>amount</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>cart</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>ShoppingCart</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>cart</span><span style=color:#111>.</span><span style=color:#75af00>setAmount</span><span style=color:#111>(</span><span style=color:#ae81ff>100</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Pay with card
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75af00>cart</span><span style=color:#111>.</span><span style=color:#75af00>setPaymentStrategy</span><span style=color:#111>(</span><span style=color:#00a8c8>new</span> <span style=color:#75af00>CreditCardPayment</span><span style=color:#111>(</span><span style=color:#d88200>&#34;1234567890123456&#34;</span><span style=color:#111>));</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>cart</span><span style=color:#111>.</span><span style=color:#75af00>checkout</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Pay with PayPal
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75af00>cart</span><span style=color:#111>.</span><span style=color:#75af00>setPaymentStrategy</span><span style=color:#111>(</span><span style=color:#00a8c8>new</span> <span style=color:#75af00>PayPalPayment</span><span style=color:#111>(</span><span style=color:#d88200>&#34;user@email.com&#34;</span><span style=color:#111>));</span>
+</span></span><span style=display:flex><span><span style=color:#75af00>cart</span><span style=color:#111>.</span><span style=color:#75af00>checkout</span><span style=color:#111>();</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h3 id=command>Command</h3><p><strong>Purpose</strong>: Encapsulates a request as an object, allowing you to parameterize clients with different requests, queue requests, and support undoable operations.</p><p><strong>When to use it</strong>:</p><ul><li>Undo/redo system</li><li>Task queues</li><li>Transactions and logs</li></ul><p><strong>JavaScript Example</strong>:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">67
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// Receiver
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>Light</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>turnOn</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;💡 Light on&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>turnOff</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;🌑 Light off&#34;</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Commands
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>TurnOnCommand</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>light</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>light</span> <span style=color:#f92672>=</span> <span style=color:#75af00>light</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>execute</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>light</span><span style=color:#111>.</span><span style=color:#75af00>turnOn</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>undo</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>light</span><span style=color:#111>.</span><span style=color:#75af00>turnOff</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>TurnOffCommand</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>(</span><span style=color:#75af00>light</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>light</span> <span style=color:#f92672>=</span> <span style=color:#75af00>light</span><span style=color:#111>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>execute</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>light</span><span style=color:#111>.</span><span style=color:#75af00>turnOff</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>undo</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>light</span><span style=color:#111>.</span><span style=color:#75af00>turnOn</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Invoker
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>class</span> <span style=color:#75af00>RemoteControl</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>constructor</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>history</span> <span style=color:#f92672>=</span> <span style=color:#111>[];</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>execute</span><span style=color:#111>(</span><span style=color:#75af00>command</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>command</span><span style=color:#111>.</span><span style=color:#75af00>execute</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>history</span><span style=color:#111>.</span><span style=color:#75af00>push</span><span style=color:#111>(</span><span style=color:#75af00>command</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>undo</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>const</span> <span style=color:#75af00>command</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>history</span><span style=color:#111>.</span><span style=color:#75af00>pop</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>if</span> <span style=color:#111>(</span><span style=color:#75af00>command</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#75af00>command</span><span style=color:#111>.</span><span style=color:#75af00>undo</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>}</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>const</span> <span style=color:#75af00>light</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>Light</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>const</span> <span style=color:#75af00>remote</span> <span style=color:#f92672>=</span> <span style=color:#00a8c8>new</span> <span style=color:#75af00>RemoteControl</span><span style=color:#111>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75af00>remote</span><span style=color:#111>.</span><span style=color:#75af00>execute</span><span style=color:#111>(</span><span style=color:#00a8c8>new</span> <span style=color:#75af00>TurnOnCommand</span><span style=color:#111>(</span><span style=color:#75af00>light</span><span style=color:#111>));</span> <span style=color:#75715e>// 💡 Light on
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75af00>remote</span><span style=color:#111>.</span><span style=color:#75af00>execute</span><span style=color:#111>(</span><span style=color:#00a8c8>new</span> <span style=color:#75af00>TurnOffCommand</span><span style=color:#111>(</span><span style=color:#75af00>light</span><span style=color:#111>));</span> <span style=color:#75715e>// 🌑 Light off
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75af00>remote</span><span style=color:#111>.</span><span style=color:#75af00>undo</span><span style=color:#111>();</span> <span style=color:#75715e>// 💡 Light on
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75af00>remote</span><span style=color:#111>.</span><span style=color:#75af00>undo</span><span style=color:#111>();</span> <span style=color:#75715e>// 🌑 Light off
+</span></span></span></code></pre></td></tr></table></div></div><hr><h2 id=-patterns-in-react>🎨 Patterns in React</h2><p>Design patterns also apply in modern frameworks like React:</p><h3 id=containerpresentational-pattern>Container/Presentational Pattern</h3><p>Separates business logic from presentation:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// Presentational Component
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>function</span> <span style=color:#75af00>UserList</span><span style=color:#111>({</span> <span style=color:#75af00>users</span><span style=color:#111>,</span> <span style=color:#75af00>onUserClick</span> <span style=color:#111>})</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>return</span> <span style=color:#111>(</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>&lt;</span><span style=color:#f92672>ul</span><span style=color:#111>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>{</span><span style=color:#75af00>users</span><span style=color:#111>.</span><span style=color:#75af00>map</span><span style=color:#111>((</span><span style=color:#75af00>user</span><span style=color:#111>)</span> <span style=color:#111>=&gt;</span> <span style=color:#111>(</span>
+</span></span><span style=display:flex><span>        <span style=color:#111>&lt;</span><span style=color:#f92672>li</span> <span style=color:#75af00>key</span><span style=color:#f92672>=</span><span style=color:#111>{</span><span style=color:#75af00>user</span><span style=color:#111>.</span><span style=color:#75af00>id</span><span style=color:#111>}</span> <span style=color:#75af00>onClick</span><span style=color:#f92672>=</span><span style=color:#111>{()</span> <span style=color:#111>=&gt;</span> <span style=color:#75af00>onUserClick</span><span style=color:#111>(</span><span style=color:#75af00>user</span><span style=color:#111>)}&gt;</span>
+</span></span><span style=display:flex><span>          <span style=color:#111>{</span><span style=color:#75af00>user</span><span style=color:#111>.</span><span style=color:#75af00>name</span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>        <span style=color:#111>&lt;/</span><span style=color:#f92672>li</span><span style=color:#111>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>))}</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>&lt;/</span><span style=color:#f92672>ul</span><span style=color:#111>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>);</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Container Component
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>function</span> <span style=color:#75af00>UserListContainer</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>const</span> <span style=color:#111>[</span><span style=color:#75af00>users</span><span style=color:#111>,</span> <span style=color:#75af00>setUsers</span><span style=color:#111>]</span> <span style=color:#f92672>=</span> <span style=color:#75af00>useState</span><span style=color:#111>([]);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>useEffect</span><span style=color:#111>(()</span> <span style=color:#111>=&gt;</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>fetchUsers</span><span style=color:#111>().</span><span style=color:#75af00>then</span><span style=color:#111>(</span><span style=color:#75af00>setUsers</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>},</span> <span style=color:#111>[]);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>const</span> <span style=color:#75af00>handleUserClick</span> <span style=color:#f92672>=</span> <span style=color:#111>(</span><span style=color:#75af00>user</span><span style=color:#111>)</span> <span style=color:#111>=&gt;</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>console</span><span style=color:#111>.</span><span style=color:#75af00>log</span><span style=color:#111>(</span><span style=color:#d88200>&#34;Selected user:&#34;</span><span style=color:#111>,</span> <span style=color:#75af00>user</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>};</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>return</span> <span style=color:#111>&lt;</span><span style=color:#f92672>UserList</span> <span style=color:#75af00>users</span><span style=color:#f92672>=</span><span style=color:#111>{</span><span style=color:#75af00>users</span><span style=color:#111>}</span> <span style=color:#75af00>onUserClick</span><span style=color:#f92672>=</span><span style=color:#111>{</span><span style=color:#75af00>handleUserClick</span><span style=color:#111>}</span> <span style=color:#111>/&gt;;</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=render-props-pattern>Render Props Pattern</h3><p>Allows sharing logic between components:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#00a8c8>class</span> <span style=color:#75af00>MouseTracker</span> <span style=color:#00a8c8>extends</span> <span style=color:#75af00>React</span><span style=color:#111>.</span><span style=color:#75af00>Component</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>state</span> <span style=color:#f92672>=</span> <span style=color:#111>{</span> <span style=color:#75af00>x</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span><span style=color:#111>,</span> <span style=color:#75af00>y</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span> <span style=color:#111>};</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>handleMouseMove</span> <span style=color:#f92672>=</span> <span style=color:#111>(</span><span style=color:#75af00>event</span><span style=color:#111>)</span> <span style=color:#111>=&gt;</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>setState</span><span style=color:#111>({</span>
+</span></span><span style=display:flex><span>      <span style=color:#75af00>x</span><span style=color:#f92672>:</span> <span style=color:#75af00>event</span><span style=color:#111>.</span><span style=color:#75af00>clientX</span><span style=color:#111>,</span>
+</span></span><span style=display:flex><span>      <span style=color:#75af00>y</span><span style=color:#f92672>:</span> <span style=color:#75af00>event</span><span style=color:#111>.</span><span style=color:#75af00>clientY</span><span style=color:#111>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>});</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>};</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>render</span><span style=color:#111>()</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#00a8c8>return</span> <span style=color:#111>(</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>&lt;</span><span style=color:#f92672>div</span> <span style=color:#75af00>onMouseMove</span><span style=color:#f92672>=</span><span style=color:#111>{</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>handleMouseMove</span><span style=color:#111>}&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#111>{</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>props</span><span style=color:#111>.</span><span style=color:#75af00>render</span><span style=color:#111>(</span><span style=color:#00a8c8>this</span><span style=color:#111>.</span><span style=color:#75af00>state</span><span style=color:#111>)}</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>&lt;/</span><span style=color:#f92672>div</span><span style=color:#111>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>}</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#111>&lt;</span><span style=color:#f92672>MouseTracker</span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>render</span><span style=color:#f92672>=</span><span style=color:#111>{({</span> <span style=color:#75af00>x</span><span style=color:#111>,</span> <span style=color:#75af00>y</span> <span style=color:#111>})</span> <span style=color:#111>=&gt;</span> <span style=color:#111>(</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>&lt;</span><span style=color:#f92672>h1</span><span style=color:#111>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#75af00>Mouse</span> <span style=color:#75af00>position</span><span style=color:#f92672>:</span> <span style=color:#111>({</span><span style=color:#75af00>x</span><span style=color:#111>},</span> <span style=color:#111>{</span><span style=color:#75af00>y</span><span style=color:#111>})</span>
+</span></span><span style=display:flex><span>    <span style=color:#111>&lt;/</span><span style=color:#f92672>h1</span><span style=color:#111>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>)}</span>
+</span></span><span style=display:flex><span><span style=color:#111>/&gt;;</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=custom-hooks-pattern>Custom Hooks Pattern</h3><p>Logic reusability with hooks:</p><div class=highlight><div style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#00a8c8>function</span> <span style=color:#75af00>useFetch</span><span style=color:#111>(</span><span style=color:#75af00>url</span><span style=color:#111>)</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>const</span> <span style=color:#111>[</span><span style=color:#75af00>data</span><span style=color:#111>,</span> <span style=color:#75af00>setData</span><span style=color:#111>]</span> <span style=color:#f92672>=</span> <span style=color:#75af00>useState</span><span style=color:#111>(</span><span style=color:#00a8c8>null</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>const</span> <span style=color:#111>[</span><span style=color:#75af00>loading</span><span style=color:#111>,</span> <span style=color:#75af00>setLoading</span><span style=color:#111>]</span> <span style=color:#f92672>=</span> <span style=color:#75af00>useState</span><span style=color:#111>(</span><span style=color:#00a8c8>true</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>const</span> <span style=color:#111>[</span><span style=color:#75af00>error</span><span style=color:#111>,</span> <span style=color:#75af00>setError</span><span style=color:#111>]</span> <span style=color:#f92672>=</span> <span style=color:#75af00>useState</span><span style=color:#111>(</span><span style=color:#00a8c8>null</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75af00>useEffect</span><span style=color:#111>(()</span> <span style=color:#111>=&gt;</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75af00>fetch</span><span style=color:#111>(</span><span style=color:#75af00>url</span><span style=color:#111>)</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>.</span><span style=color:#75af00>then</span><span style=color:#111>((</span><span style=color:#75af00>res</span><span style=color:#111>)</span> <span style=color:#111>=&gt;</span> <span style=color:#75af00>res</span><span style=color:#111>.</span><span style=color:#75af00>json</span><span style=color:#111>())</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>.</span><span style=color:#75af00>then</span><span style=color:#111>(</span><span style=color:#75af00>setData</span><span style=color:#111>)</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>.</span><span style=color:#00a8c8>catch</span><span style=color:#111>(</span><span style=color:#75af00>setError</span><span style=color:#111>)</span>
+</span></span><span style=display:flex><span>      <span style=color:#111>.</span><span style=color:#00a8c8>finally</span><span style=color:#111>(()</span> <span style=color:#111>=&gt;</span> <span style=color:#75af00>setLoading</span><span style=color:#111>(</span><span style=color:#00a8c8>false</span><span style=color:#111>));</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>},</span> <span style=color:#111>[</span><span style=color:#75af00>url</span><span style=color:#111>]);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>return</span> <span style=color:#111>{</span> <span style=color:#75af00>data</span><span style=color:#111>,</span> <span style=color:#75af00>loading</span><span style=color:#111>,</span> <span style=color:#75af00>error</span> <span style=color:#111>};</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#00a8c8>function</span> <span style=color:#75af00>UserProfile</span><span style=color:#111>({</span> <span style=color:#75af00>userId</span> <span style=color:#111>})</span> <span style=color:#111>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>const</span> <span style=color:#111>{</span> <span style=color:#75af00>data</span><span style=color:#111>,</span> <span style=color:#75af00>loading</span><span style=color:#111>,</span> <span style=color:#75af00>error</span> <span style=color:#111>}</span> <span style=color:#f92672>=</span> <span style=color:#75af00>useFetch</span><span style=color:#111>(</span><span style=color:#d88200>`/api/users/</span><span style=color:#d88200>${</span><span style=color:#75af00>userId</span><span style=color:#d88200>}</span><span style=color:#d88200>`</span><span style=color:#111>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>if</span> <span style=color:#111>(</span><span style=color:#75af00>loading</span><span style=color:#111>)</span> <span style=color:#00a8c8>return</span> <span style=color:#111>&lt;</span><span style=color:#f92672>div</span><span style=color:#111>&gt;</span><span style=color:#75af00>Loading</span><span style=color:#111>...&lt;/</span><span style=color:#f92672>div</span><span style=color:#111>&gt;;</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>if</span> <span style=color:#111>(</span><span style=color:#75af00>error</span><span style=color:#111>)</span> <span style=color:#00a8c8>return</span> <span style=color:#111>&lt;</span><span style=color:#f92672>div</span><span style=color:#111>&gt;</span><span style=color:#111>Error</span><span style=color:#f92672>:</span> <span style=color:#111>{</span><span style=color:#75af00>error</span><span style=color:#111>.</span><span style=color:#75af00>message</span><span style=color:#111>}&lt;/</span><span style=color:#f92672>div</span><span style=color:#111>&gt;;</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>return</span> <span style=color:#111>&lt;</span><span style=color:#f92672>div</span><span style=color:#111>&gt;{</span><span style=color:#75af00>data</span><span style=color:#111>.</span><span style=color:#75af00>name</span><span style=color:#111>}&lt;/</span><span style=color:#f92672>div</span><span style=color:#111>&gt;;</span>
+</span></span><span style=display:flex><span><span style=color:#111>}</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=-best-practices>🚀 Best Practices</h2><h3 id=-do>✅ Do</h3><ul><li><strong>Understand the problem before applying a pattern</strong></li><li><strong>Use patterns to improve readability</strong></li><li><strong>Combine patterns when it makes sense</strong></li><li><strong>Document why you used a specific pattern</strong></li><li><strong>Refactor towards patterns gradually</strong></li></ul><h3 id=-avoid>❌ Avoid</h3><ul><li><strong>Don&rsquo;t use patterns just for the sake of using them</strong></li><li><strong>Don&rsquo;t over-engineer simple solutions</strong></li><li><strong>Don&rsquo;t apply all patterns in a single project</strong></li><li><strong>Don&rsquo;t ignore your project&rsquo;s specific needs</strong></li><li><strong>Don&rsquo;t sacrifice simplicity for complex patterns</strong></li></ul><hr><h2 id=-additional-resources>📖 Additional Resources</h2><h3 id=recommended-books>Recommended Books</h3><ul><li><strong>&ldquo;Design Patterns: Elements of Reusable Object-Oriented Software&rdquo;</strong> - Gang of Four (GoF)</li><li><strong>&ldquo;Head First Design Patterns&rdquo;</strong> - Freeman & Robson</li><li><strong>&ldquo;Refactoring: Improving the Design of Existing Code&rdquo;</strong> - Martin Fowler</li><li><strong>&ldquo;Clean Code&rdquo;</strong> - Robert C. Martin</li></ul><h3 id=websites>Websites</h3><ul><li><a href=https://refactoring.guru/design-patterns>Refactoring Guru</a> - Excellent visualizations and examples</li><li><a href=https://www.patterns.dev/>Patterns.dev</a> - Patterns for JavaScript and React</li><li><a href=https://sourcemaking.com/design_patterns>Source Making</a> - Complete pattern tutorial</li></ul><hr><h2 id=-conclusion>🎯 Conclusion</h2><p>Design patterns are powerful tools that, when used correctly, can significantly improve the quality of your code. However, remember:</p><blockquote><p>&ldquo;There are no good or bad patterns, only well or poorly applied patterns.&rdquo;</p></blockquote><p>The key is to:</p><ul><li><strong>Know</strong> the available patterns</li><li><strong>Understand</strong> when to apply them</li><li><strong>Know</strong> when not to apply them</li><li><strong>Adapt</strong> patterns to your specific needs</li></ul><p>The ultimate goal is to write code that is easy to maintain, understand, and extend. Design patterns are means to achieve that goal, not the goal itself.</p><hr><p><em>Do you have experience with any design pattern? Which is your favorite? Share your experience in the comments!</em> 💬</p></div><div class="social-share pt-5"><h4>Help us by sharing this post if you liked it 💪</h4><a class=resp-sharing-button__link href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fwww.codescouts.academy%2fen%2fblog%2fpatrones-de-disenio%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg viewBox="0 0 310 310"><path d="M72.16 99.73H9.927c-2.762.0-5 2.239-5 5v199.928c0 2.762 2.238 5 5 5H72.16c2.762.0 5-2.238 5-5V104.73c0-2.76100000000001-2.238-5-5-5z"/><path d="M41.066.341C18.422.341.0 18.743.0 41.362.0 63.991 18.422 82.4 41.066 82.4c22.626.0 41.033-18.41 41.033-41.038C82.1 18.743 63.692.341 41.066.341z"/><path d="M230.454 94.761c-24.995.0-43.472 10.745-54.679 22.954V104.73c0-2.761-2.238-5-5-5h-59.599c-2.762.0-5 2.239-5 5v199.928c0 2.762 2.238 5 5 5h62.097c2.762.0 5-2.238 5-5V205.74c0-33.333 9.054-46.319 32.29-46.319 25.306.0 27.317 20.818 27.317 48.034v97.204c0 2.762 2.238 5 5 5H305c2.762.0 5-2.238 5-5V194.995C310 145.43 300.549 94.761 230.454 94.761z"/></svg></div></div></a><a class=resp-sharing-button__link href="https://twitter.com/intent/tweet/?text=GOF%20Design%20patterns&url=https%3a%2f%2fwww.codescouts.academy%2fen%2fblog%2fpatrones-de-disenio%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5.0-4.55 2.04-4.55 4.54.0.36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3.0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35.0 12.92-6.92 12.92-12.93.0-.2.0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg></div></div></a><a class=resp-sharing-button__link href="mailto:?subject=GOF%20Design%20patterns&body=https%3a%2f%2fwww.codescouts.academy%2fen%2fblog%2fpatrones-de-disenio%2f" target=_self rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9.0 6v12c0 1.1.9 2 2 2h20c1.1.0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17.0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1.0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08.0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg></div></div></a><a class=resp-sharing-button__link href="whatsapp://send?text=GOF%20Design%20patterns%20https%3a%2f%2fwww.codescouts.academy%2fen%2fblog%2fpatrones-de-disenio%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3.0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7.0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1.0-5.2 4.2-9.4 9.4-9.4 2.5.0 4.9 1 6.7 2.8s2.8 4.2 2.8 6.7c-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2s0-.5.1-.6.3-.3.4-.5c.2-.1.3-.3.4-.5s0-.4.0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg></div></div></a><a class=resp-sharing-button__link href="https://telegram.me/share/url?text=GOF%20Design%20patterns&url=https%3a%2f%2fwww.codescouts.academy%2fen%2fblog%2fpatrones-de-disenio%2f" target=_blank rel=noopener aria-label><div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden=true class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64.0 9.508.0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102.0 001.75.527l2.96-2.41a.405.405.0 01.494-.013l5.34 3.87a1.1 1.1.0 001.046.135 1.1 1.1.0 00.682-.803l3.91-18.795A1.102 1.102.0 0022.5.075L.706 8.475z"/></svg></div></div></a></div></div></div></div></section><section id=talk class="section bg-dark"><div class="container pt-5"><div class=row><div class=col-12><div class="title pb-0 text-center wow fadeIn" data-wow-duration=500ms><h3>Shall<span>
+we chat?</span></h3><div class=border-meghna></div><br><h5 class=white>If you prefer, schedule a call directly with us</h5></div></div><div class="contact-info col-12 wow fadeInUp" data-wow-duration=500ms><div class=calendly-inline-widget data-url="https://calendly.com/codescouts/30min?hide_gdpr_banner=1" style=min-width:320px;height:700px></div></div></div></div></section><script>window.onload=function(){window.setTimeout(function(){var e=document.createElement("script");e.async=!0,e.src="https://assets.calendly.com/assets/external/widget.js",document.querySelector("head").appendChild(e)},1e3)}</script><footer class="bg-dark pt-5"><div class=container><div class="row wow fadeInUp" data-wow-duration=500ms><div class=col-12><div class=row><div class="col-12 col-md-3 d-flex flex-column align-items-center align-items-lg-start"><a href=https://www.fundae.es/ target=_blank><img src=/images/fundae.png height=110 alt="Fundae | Fundación estatal para la formación en el empleo" loading=lazy></a></div><div class="col-12 col-md-9"><div class=row style=gap:10px><div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-lg-start"><div class=row>Services</div><div class=row><a href=https://www.codescouts.academy/en/services/technical-coaching/>Technical coaching</a></h3></div><div class=row><a href=https://www.codescouts.academy/en/services/talent-accelerator/>Accelerated Program</a></h3></div><div class=row><a href=https://www.codescouts.academy/en/services/cto-as-a-service/>CTO as a Service</a></h3></div><div class=row><a href=https://www.codescouts.academy/en/services/software-consulting/>Software Consulting</a></h3></div><div class=row><a href=/en/courses>Training</a></h3></div></div><div class="col-12 col-md-2 d-flex flex-column align-items-center align-items-lg-start"><div class=row>Community</div><div class=row><a href=https://www.codescouts.academy/en/blog/>Blog</a></div><div class=row></div><div class=row><a href=https://interview.codescouts.academy/ target=_blank>Game interview</a>
+<i class="external white"></i></div><div class=row><a href=https://library.codescouts.academy/ target=_blank>Library</a>
+<i class="external white"></i></div></div><div class="col-12 col-md-2 d-flex flex-column align-items-center align-items-lg-start"><div class=row>Social</div><ul class=list-inline><div class=row><li class=list-inline-item><a href=https://github.com/codescouts-academy target=_blank><i class=ti-github></i></a></li><li class=list-inline-item><a href=https://twitter.com/code_scouts target=_blank><i class=ti-twitter-alt></i></a></li><li class=list-inline-item><a href=https://www.instagram.com/codescouts.academy/ target=_blank><i class=ti-instagram></i></a></li><li class=list-inline-item><a href=https://www.linkedin.com/company/codescouts target=_blank><i class=ti-linkedin></i></a></li><li class=list-inline-item><a href=https://www.youtube.com/@code_scouts target=_blank><i class=ti-youtube></i></a></li></div></ul></div><div class="col-12 col-md-2 d-flex flex-column align-items-center align-items-lg-start"><div class=row>Contact</div><div class=row><a href=tel:+34664109973>+34 664 109 973</a></div><div class=row><a href=mailto:hello@codescouts.academy>hello@codescouts.academy</a></div></div></div></div></div><hr><div class="copyright text-center"><div class=container><div class="row d-flex justify-content-center" style=gap:5px><div>&lt;Code
+<span class=secondary>Scouts/></span></div>|<div>Copyright &copy;
+2025</div></div></div><div class="row d-flex justify-content-center"><div class=d-flex style=gap:5px>Working with <img src=/images/heart.png width=18px loading=lazy alt=Love> from Galicia
+<img src=/images/ga-emoji.png width=20px loading=lazy alt=Galicia></div></div><div class="row d-flex justify-content-center"><div class=d-flex style=gap:5px;font-size:x-small><a href=/legal/cookies>Política de cookies</a></div></div></div></div></div></div></footer><style>.modal.custom .modal-dialog{width:auto;max-width:380px;position:fixed;bottom:0;right:0;margin:0;margin-bottom:10px;margin-right:10px}@media(max-width:480px){.modal.custom .modal-dialog{width:100%;max-width:unset;margin:0 auto;padding:20px}}.modal.custom .modal-content{border-radius:0}.modal.custom{width:auto}body{overflow:unset!important;padding-right:0!important}</style><div class="modal custom fade in" id=news data-expire=1 data-timeout=100><div class=modal-dialog role=document><div class="modal-content bg-dark"><div class=modal-header><h5 class="modal-title white">¿Can we help you? 🤔</h5></div><div class=modal-body><h6 id=we-are-aware-of-the-consequences-that-come-with-having-software-with-errors-or-slow-development-processes-thats-why-we-can-help-you-with--br-----identifying-problems-and-weaknesses-in-your-development-process-br->We are aware of <strong>the consequences</strong> that come with having software with errors or <strong>slow development processes</strong>, that&rsquo;s why we can help you with: 👇<br>- 🎯 Identifying problems and weaknesses in your development process.<br></h6><ul><li>🔨 Implementing the best practices and tools to improve software quality.<br></li><li>🏋️ Training team members in effective development skills and techniques.<br></li><li>💬 Improving communication and collaboration within the team to achieve more efficient and effective software delivery.</li></ul><p><span>Contact us and we&rsquo;ll have a free session to determine how can we help you.</span></div><div class=modal-footer><button id=accept-help-action class="help-action btn btn-primary">Let's go!</a>
+<button class="help-action btn btn-secondary">No yet</button></div></div></div></div><div class="modal custom fade in out" id=contact-dialog><div class=modal-dialog role=document><div class="modal-content bg-dark"><div class=modal-header><h5 class="modal-title white">¿Can we help you? 🤔</h5></div><form id=contact-form-can-we-help-you class="form-meghna dark" method=post action=https://api.hsforms.com/submissions/v3/integration/submit/25900557/c0895238-64c5-479e-9438-98187fbe64ea role=form data-success="Thank you! We will get in touch with you."><div class=modal-body><div class=post-single-content><div class="col-lg-12 wow fadeInUp" data-wow-duration=500ms data-wow-delay=300ms><div class=form-group><div class=input-group><input required type=text placeholder=Name class="form-control mr-3" name=firstname id=firstname>
+<input required type=text placeholder=Surname class=form-control name=lastname id=lastname></div></div><div class=form-group><input required type=email placeholder=Email class=form-control name=email id=email></div><div class=form-group><input required type=text placeholder=Phone class=form-control name=phone id=phone></div><div class=form-group><input required type=text placeholder=Company class=form-control name=company id=company></div><div class=form-group hidden><textarea required rows=6 class=form-control name=message id=message>
+                                                    Can we help you app information
+                                                </textarea></div></div></div></div><div class=modal-footer><button type=submit id=contact-submit class="btn btn-primary">Vamos!</a>
+<button id=close-modal class="btn btn-secondary" data-dismiss=modal>Aún no</button></div></form></div></div></div><script src=https://www.codescouts.academy/plugins/jquery/jquery.min.5d9a9d962f4458a3bbf7e9e40ee373177a39f7042b33b1df175a530c3d692555457d3a03df45ee83270ddc2f9f974d40.js integrity=sha384-XZqdli9EWKO79+nkDuNzF3o59wQrM7HfF1pTDD1pJVVFfToD30XugycN3C+fl01A></script>
+<script src=https://www.codescouts.academy/plugins/bootstrap/bootstrap.min.33432f23381d1e2b6dcc8ce5d4562a1febc855dfc58f53fbf1e3e6fd362337eb6cca1564c5bb5f7ae1ded98442cf2b52.js integrity=sha384-M0MvIzgdHittzIzl1FYqH+vIVd/Fj1P78ePm/TYjN+tsyhVkxbtfeuHe2YRCzytS></script>
+<script src=https://www.codescouts.academy/plugins/slick/slick.min.6eeee7d80853ae157c70b5dc269e0f0e75cca1e106985d5e6d116e26bd119b0e84aee799d70d5f1b3b3da42886615dad.js integrity=sha384-bu7n2AhTrhV8cLXcJp4PDnXMoeEGmF1ebRFuJr0Rmw6ErueZ1w1fGzs9pCiGYV2t></script>
+<script src=https://www.codescouts.academy/js/script.min.3ddf609df3ebd1a52d2f5aa49813c9255fded0d28d9fd337792cee4bca8a1f3a2fd5a6e9d7a922cc7c017fc537e44afb.js integrity=sha384-Pd9gnfPr0aUtL1qkmBPJJV/e0NKNn9M3eSzuS8qKHzov1abp16kizHwBf8U35Er7></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js></script>
+<script src=https://www.codescouts.academy/js/news.min.2ab926da7e1d444ddd36637f18763a1a0855d8be0e878ba2f44fb41de051b28f108c22c7f9784cee068436a298b5baf0.js integrity=sha384-Krkm2n4dRE3dNmN/GHY6GghV2L4Oh4ui9E+0HeBRso8QjCLH+XhM7gaENqKYtbrw defer></script>
+<script src=https://www.codescouts.academy/js/analytics.min.6a6dee527948dfdcbb99d22c649a60071938d088cbc9f5cbacb8446386cc413d948bb9bff662521842e13b84a51598f4.js integrity=sha384-am3uUnlI39y7mdIsZJpgBxk40IjLyfXLrLhEY4bMQT2Ui7m/9mJSGELhO4SlFZj0></script></body></html>
